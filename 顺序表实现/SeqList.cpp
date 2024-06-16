@@ -10,6 +10,55 @@ void SeqListInit(SL* ps) {
 
 }; // 初始化
 void SeqListPushBack(SL* ps, SLDataType x) {
+	SeqListCheckCapacity(ps);
+	ps->a[ps->size] = x;
+	ps->size++;
+}; // 尾插
+void SeqListPopBack(SL* ps) {
+	assert(ps->size > 0);
+	ps->size--;
+}; // 尾删
+void SeqListPushFront(SL* ps, SLDataType x) {
+	SeqListCheckCapacity(ps);
+	// 挪动数据
+	int end = ps->size - 1;
+	while (end >= 0) {
+		ps->a[end + 1] = ps->a[end];
+		--end;
+	}
+	ps->a[0] = x;
+	ps->size++;
+
+}; // 头插
+void SeqListPushFront(SL* ps) {
+	assert(ps->size > 0);
+	// 挪动数据
+	int begin = 1;
+	while (begin < ps->size) {
+		ps->a[begin - 1] = ps->a[begin];
+		++begin;
+	}
+	ps->size--;
+}; // 头删
+void SeqListDeatory(SL* ps) {
+	free(ps->a);
+	ps->size = 0;
+	ps->capacity = 0;
+}; // 销毁
+
+int SeqListFind(SL* ps, SLDataType x) {
+	for (int i = 0; i < ps->size; i++)
+	{
+		if (x == ps->a[i]) {
+			return i;
+		}
+		else if (i == ps->size - 1 && x != ps->a[ps->size - 1]) {
+			return -1;
+		}
+	}
+}; // 查找
+
+void SeqListCheckCapacity(SL* ps) {
 	// 如果没有空间或者空间不足，我们就扩容
 	if (ps->size == ps->capacity) {
 		int newCapacity = ps->capacity == 0 ? 4 : ps->capacity * 2;
@@ -25,24 +74,7 @@ void SeqListPushBack(SL* ps, SLDataType x) {
 		ps->capacity = newCapacity; // 表示数组实际能存数据的空间容量是多大（个数）
 
 	}
-	ps->a[ps->size] = x;
-	ps->size++;
-}; // 尾插
-void SeqListPopBack(SL* ps) {
-	assert(ps->size > 0);
-	ps->size--;
-}; // 尾删
-void SeqListPushFront(SL* ps, SLDataType x) {
-}; // 头插
-void SeqListPushFront(SL* ps) {
-}; // 头删
-void SeqListDeatory(SL* ps) {
-	free(ps->a);
-	ps->size = 0;
-	ps->capacity = 0;
-}; // 销毁
-
-
+};
 void printInfo(SL* ps) {
 	for (int i = 0; i < ps->size; i++)
 	{

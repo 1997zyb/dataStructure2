@@ -1,4 +1,5 @@
 ﻿  SeqList.cpp
   Test.cpp
   正在生成代码...
+D:\dataStructure\顺序表实现\SeqList.cpp(59,1): warning C4715: “SeqListFind”: 不是所有的控件路径都返回值
   顺序表实现.vcxproj -> D:\dataStructure\顺序表实现\x64\Debug\顺序表实现.exe

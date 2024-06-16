@@ -29,12 +29,18 @@ void SeqListInit(SL* ps); // 初始化
 void printInfo(SL* ps); // 打印
 void SeqListDeatory(SL* ps); // 销毁
 
-
+void SeqListCheckCapacity(SL* ps); // 检查容量
 void SeqListPushBack(SL* ps, SLDataType x); // 尾插
 void SeqListPopBack(SL* ps); // 尾删
 void SeqListPushFront(SL* ps, SLDataType x); // 头插
 void SeqListPushFront(SL* ps); // 头删
 
+// 查找
+int SeqListFind(SL* ps, SLDataType x);
+//指定下标位置插入
+void SeqListInsert(SL* ps, int pos, SLDataType x);
+//删除指定位置的数据
+void SeqListErase(SL* ps, int pos);
 
 
 
