@@ -52,12 +52,34 @@ int SeqListFind(SL* ps, SLDataType x) {
 		if (x == ps->a[i]) {
 			return i;
 		}
-		else if (i == ps->size - 1 && x != ps->a[ps->size - 1]) {
+		/*else if (i == ps->size - 1 && x != ps->a[ps->size - 1]) {
 			return -1;
-		}
+		}*/
 	}
+	return -1;
 }; // 查找
-
+void SeqListInsert(SL* ps, int pos, SLDataType x) {
+	assert(pos <= ps->size && pos >= 0);
+	SeqListCheckCapacity(ps);
+	int end = ps->size - 1;
+	// 挪动数据
+	while (end >= pos) {
+		ps->a[end + 1] = ps->a[end];
+		--end;
+	}
+	ps->a[pos] = x;
+	ps->size++;
+}; // 指定下标插入
+void SeqListErase(SL* ps, int pos) {
+	assert(pos < ps->size && pos >= 0);
+	int begin = pos + 1;
+	while (begin < ps->size)
+	{
+		ps->a[begin - 1] = ps->a[begin];
+		++begin;
+	}
+	ps->size--;
+}; // 指定位置删除
 void SeqListCheckCapacity(SL* ps) {
 	// 如果没有空间或者空间不足，我们就扩容
 	if (ps->size == ps->capacity) {
