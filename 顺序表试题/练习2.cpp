@@ -31,9 +31,9 @@ void printArr(int* arr, int len) {
 	}
 }
 int main() {
-	int arr1[] = { 1,2,3,0,0,0 };
-	int arr2[] = { 2,5,6 };
-	merge(arr1, 3, arr2, 3);
+	int arr1[] = { 1,3,5,7,9,0,0,0,0 };
+	int arr2[] = { 2,4,6,8 };
+	merge(arr1, 5, arr2, 4);
 	int len = sizeof(arr1) / sizeof(arr1[0]);
 	printArr(arr1, len);
 }
